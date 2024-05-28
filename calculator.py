@@ -1,8 +1,8 @@
 from tkinter import *
-from math import factorial, pi
+from math import factorial, pi, sqrt, log, sin, cos, tan
 
 root = Tk()
-root.title('DataFlair - Calculator')
+root.title('Calculator')
 
 # It keeps the track of the current position on the input text field
 i = 0
@@ -57,6 +57,72 @@ def fact():
         clear_all()
         display.insert(0, "Error")
 
+# Function to calculate the square root and display it
+def sqrt_operation():
+    entire_string = display.get()
+    try:
+        result = sqrt(float(entire_string))
+        clear_all()
+        display.insert(0, result)
+    except Exception:
+        clear_all()
+        display.insert(0, "Error")
+
+# Function to calculate the logarithm and display it
+def log_operation():
+    entire_string = display.get()
+    try:
+        result = log(float(entire_string))
+        clear_all()
+        display.insert(0, result)
+    except Exception:
+        clear_all()
+        display.insert(0, "Error")
+
+# Function to calculate the sine and display it
+def sin_operation():
+    entire_string = display.get()
+    try:
+        result = sin(float(entire_string))
+        clear_all()
+        display.insert(0, result)
+    except Exception:
+        clear_all()
+        display.insert(0, "Error")
+
+# Function to calculate the cosine and display it
+def cos_operation():
+    entire_string = display.get()
+    try:
+        result = cos(float(entire_string))
+        clear_all()
+        display.insert(0, result)
+    except Exception:
+        clear_all()
+        display.insert(0, "Error")
+
+# Function to calculate the tangent and display it
+def tan_operation():
+    entire_string = display.get()
+    try:
+        result = tan(float(entire_string))
+        clear_all()
+        display.insert(0, result)
+    except Exception:
+        clear_all()
+        display.insert(0, "Error")
+
+# Function to calculate the power of 10 and display it
+def power_of_ten():
+    entire_string = display.get()
+    try:
+        result = 10**float(entire_string)
+        clear_all()
+        display.insert(0, result)
+    except Exception:
+        clear_all()
+        display.insert(0, "Error")
+
 # --------------------------------------UI Design ---------------------------------------------
 
 # Adding the input field
@@ -93,11 +159,18 @@ Button(root, text="%", command=lambda: get_operation("%")).grid(row=3, column=4,
 Button(root, text="(", command=lambda: get_operation("(")).grid(row=4, column=4, sticky=N+S+E+W)
 Button(root, text="exp", command=lambda: get_operation("**")).grid(row=5, column=4, sticky=N+S+E+W)
 
-Button(root, text="<-", command=lambda: undo()).grid(row=2, column=5, sticky=N+S+E+W)
+Button(root, text="undo", command=lambda: undo()).grid(row=2, column=5, sticky=N+S+E+W)
 Button(root, text="x!", command=lambda: fact()).grid(row=3, column=5, sticky=N+S+E+W)
 Button(root, text=")", command=lambda: get_operation(")")).grid(row=4, column=5, sticky=N+S+E+W)
 Button(root, text="^2", command=lambda: get_operation("**2")).grid(row=5, column=5, sticky=N+S+E+W)
 
-Button(root, text="=", command=lambda: calculate()).grid(row=6, columnspan=6, sticky=N+S+E+W)
+Button(root, text="sqrt", command=lambda: sqrt_operation()).grid(row=6, column=0, sticky=N+S+E+W)
+Button(root, text="log", command=lambda: log_operation()).grid(row=6, column=1, sticky=N+S+E+W)
+Button(root, text="sin", command=lambda: sin_operation()).grid(row=6, column=2, sticky=N+S+E+W)
+Button(root, text="cos", command=lambda: cos_operation()).grid(row=6, column=3, sticky=N+S+E+W)
+Button(root, text="tan", command=lambda: tan_operation()).grid(row=6, column=4, sticky=N+S+E+W)
+Button(root, text="10^x", command=lambda: power_of_ten()).grid(row=6, column=5, sticky=N+S+E+W)
+
+Button(root, text="=", command=lambda: calculate()).grid(row=7, columnspan=6, sticky=N+S+E+W)
 
 root.mainloop()
