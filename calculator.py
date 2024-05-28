@@ -5,6 +5,7 @@ root = Tk()
 root.title('Calculator')
 
 # It keeps the track of the current position on the input text field
+
 i = 0
 
 # Receives the digit as parameter and displays it on the input field
